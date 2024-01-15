@@ -1,6 +1,7 @@
 import React, { useEffect, useState } from 'react'
 import { Routes, Route, Outlet, Link } from "react-router-dom";
 import './Zdjecia.css'
+import Gallery from './components/gallery/gallery';
 
 export default function Home() {
 
@@ -62,14 +63,6 @@ function Zdjecia() {
     }, [])
 
     return (<main>
-        {(typeof spots.imagename === 'undefined') ? (
-            <p>Loading...</p>
-        ) : (
-            spots.map((spot, i) => (
-                <article key={i}>
-                    <img src={process.env.PUBLIC_URL + '/spot-images/' + spot.imagename} />
-                </article>
-            ))
-        )}
+        <Gallery spots={spots} />
     </main>)
 }
