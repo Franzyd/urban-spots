@@ -50,19 +50,7 @@ function Layout() {
 }
 
 function Zdjecia() {
-    const [spots, setSpots] = useState([{}])
-
-    useEffect(() => {
-        fetch("/spots").then(
-            response => response.json()
-        ).then(
-            data => {
-                setSpots(data)
-            }
-        )
-    }, [])
-
     return (<main>
-        <Gallery spots={spots} />
+        <Gallery />
     </main>)
 }

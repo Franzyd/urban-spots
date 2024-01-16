@@ -1,10 +1,22 @@
-import React from 'react'
+import React, { useEffect, useState } from 'react'
 import './gallery.css'
 
-export default function Gallery({spots}) {
+export default function Gallery() {
+    const [spots, setSpots] = useState([{}])
+
+    useEffect(() => {
+        fetch("/spots").then(
+            response => response.json()
+        ).then(
+            data => {
+                setSpots(data)
+            }
+        )
+    }, [])
+
     return (<div className='gallery'>
         {(typeof spots.data === 'undefined') ? (
-            <p>Loading...</p>
+            <p className='spot'>Loading...</p>
         ) : (
             spots.data.map((spot, i) => (
                 <article key={i} className='spot'>
