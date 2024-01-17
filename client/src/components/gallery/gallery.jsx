@@ -5,7 +5,7 @@ export default function Gallery() {
     const [spots, setSpots] = useState([{}])
 
     useEffect(() => {
-        fetch("/spots").then(
+        fetch("http://localhost:5000/spots").then(
             response => response.json()
         ).then(
             data => {
