@@ -20,7 +20,14 @@ export default function Gallery() {
         ) : (
             spots.data.map((spot, i) => (
                 <article key={i} className='spot'>
-                    <img src={process.env.PUBLIC_URL + '/spot-images/' + spot.imagename} />
+                    <img src={
+                        (spot.imagename.includes("/"))
+                        ? (spot.imagename)
+                        : (process.env.PUBLIC_URL + '/spot-images/' + spot.imagename)
+                    } title={(spot.description !== null ? spot.description + `
+` : '') + 'miejsce: ' + spot.location + `
+rating: ` + spot.rating} />
+                    <p>{spot.title}</p>
                 </article>
             ))
         )}
